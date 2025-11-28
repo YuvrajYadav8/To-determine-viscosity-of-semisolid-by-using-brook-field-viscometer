@@ -394,7 +394,7 @@ upOffSwitch3.addEventListener("click", () => {
             f = 201;
             latex_beaker()
               
-            })
+            },  { once: true })
         }
     }
 });
@@ -445,7 +445,7 @@ function startHoldingTimer(minutes) {
 
 function latex_beaker () {
 if (f === 201) {
-    f =201.5;
+    f =202;
      latex_beaker_200.addEventListener("click", () => {
         latex_beaker_200.style.top = "30%"
 
@@ -478,7 +478,7 @@ if (f === 201) {
                                     startbutton.style.visibility="visible"
                                     startbutton.style.opacity = "100%"
                                     startbutton.innerText="Next"
-                                    f = 202;
+                                   
                                     f = 600;
                                                          }, 1000); 
                                                          }, 1000); 
@@ -588,7 +588,7 @@ function viscometer() {
       { time: 12000, s: "S62", cp: "cp 180", percent: "3.4%", rpm: "7.5RPM" },
       { time: 15000, s: "S62", cp: "cp 209", percent: "4.1%", rpm: "8.0RPM" }
     ];
-
+  
     spindleValues.forEach(({ time, s, cp, percent, rpm }) => {
       setTimeout(() => {
         document.getElementById("actualTempDisplay4").innerText = s;
@@ -597,18 +597,21 @@ function viscometer() {
         document.getElementById("sampleTempDisplay5").innerText = rpm;
        
       }, time);
+      f = 997.5
     });
 
     // After full sequence
     setTimeout(() => {
      
         setTimeout(() => {
+          if(f === 997.5){
       f = 998;
       isMotorRunning = false; // Allow next click
        isRunningSequence = false; 
         ins.innerText = "Rotation completed !! Click on the motor ON/OFF button to stop the motor. See the readings";
+          }
         }, 1000)
-    }, 0);  //15600
+    }, 10500);  //15600
     
   }
 
